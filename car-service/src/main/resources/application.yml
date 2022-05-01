@@ -1,0 +1,6 @@
+server:
+  port: 8084
+spring:
+  data:
+    mongodb:
+      uri: mongodb://user:1234@localhost:27017/test
