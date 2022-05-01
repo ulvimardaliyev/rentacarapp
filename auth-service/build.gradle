@@ -1,0 +1,51 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.7'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'az.rentacar'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //spring
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation libraries.web
+    implementation libraries.springData
+    implementation libraries.springSecurity
+    implementation libraries.springValidation
+    //jwt
+    runtimeOnly libraries.jwtImpl
+    runtimeOnly libraries.jwtJackson
+    implementation libraries.jwtToken
+    implementation libraries.jwtApi
+    //lombok
+    compileOnly libraries.lombok
+    annotationProcessor libraries.lombok
+    testCompileOnly libraries.lombok
+    testAnnotationProcessor libraries.lombok
+    //swagger
+    implementation libraries.swagger2
+    implementation libraries.swaggerUi
+    implementation libraries.swaggerCore
+    //mapstruct
+    implementation libraries.mapstructImpl
+    annotationProcessor libraries.mapstructAnotationProcessor
+    //postgresql
+    compileOnly libraries.postgresqlDriver
+}
+
+tasks.named('test') {
+//    useJUnitPlatform()
+}
+task prepareKotlinBuildScriptModel {
+
+}
+
