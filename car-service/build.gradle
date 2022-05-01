@@ -4,10 +4,9 @@ plugins {
     id 'java'
 }
 
-group = 'az.rentacar.auth.service'
+group = 'az.rentacar.car.service'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
-targetCompatibility = '11'
 
 repositories {
     mavenCentral()
@@ -18,14 +17,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation libraries.web
-    implementation libraries.springData
-    implementation libraries.springSecurity
     implementation libraries.springValidation
-    //jwt
-    runtimeOnly libraries.jwtImpl
-    runtimeOnly libraries.jwtJackson
-    implementation libraries.jwtToken
-    implementation libraries.jwtApi
+    implementation libraries.springMongodb
     //lombok
     compileOnly libraries.lombok
     annotationProcessor libraries.lombok
@@ -38,8 +31,6 @@ dependencies {
     //mapstruct
     implementation libraries.mapstructImpl
     annotationProcessor libraries.mapstructAnotationProcessor
-    //postgresql
-    compileOnly libraries.postgresqlDriver
 }
 
 tasks.named('test') {
@@ -48,4 +39,3 @@ tasks.named('test') {
 task prepareKotlinBuildScriptModel {
 
 }
-
