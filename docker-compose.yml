@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  postgres:
+    image: "postgres:latest"
+    ports:
+      - "5436:5432"
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=rent_a_car
+      - PGDATA=/var/lib/pgsql_docker/data
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+    restart: always
+volumes:
+  database-data:

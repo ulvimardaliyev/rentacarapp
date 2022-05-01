@@ -1,0 +1,57 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.7'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'az.rentacar'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+targetCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
+ext.libraries = [
+        //spring
+        springData                 : ['org.springframework.boot:spring-boot-starter-data-jpa:2.6.7'],
+        springSecurity             : ['org.springframework.boot:spring-boot-starter-security:2.6.7'],
+        springValidation           : ['org.springframework.boot:spring-boot-starter-validation:2.6.7'],
+        springMongodb              : ['org.springframework.boot:spring-boot-starter-data-mongodb:2.6.7'],
+        web                        : ['org.springframework.boot:spring-boot-starter-web:2.6.7'],
+        //jwt
+        jwtImpl                    : ['io.jsonwebtoken:jjwt-impl:0.11.2'],
+        jwtToken                   : ['io.jsonwebtoken:jjwt:0.9.1'],
+        jwtApi                     : ['io.jsonwebtoken:jjwt-api:0.11.2'],
+        jwtJackson                 : ['io.jsonwebtoken:jjwt-jackson:0.11.2'],
+        //swagger
+        swagger2                   : ['io.springfox:springfox-swagger2:3.0.0'],
+        swaggerUi                  : ['io.springfox:springfox-swagger-ui:3.0.0'],
+        swaggerCore                : ['io.springfox:springfox-core:3.0.0'],
+        //liquibase
+        liquibaseCore              : ['org.liquibase:liquibase-core:4.9.1'],
+        //mapstruct
+        mapstructImpl              : ['org.mapstruct:mapstruct:1.4.2.Final'],
+        mapstructAnotationProcessor: ['org.mapstruct:mapstruct-processor:1.4.2.Final'],
+        //lombok
+        lombok                     : ['org.projectlombok:lombok:1.18.24'],
+        //postgresql
+        postgresqlDriver           : ['org.postgresql:postgresql:42.3.4']
+]
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
