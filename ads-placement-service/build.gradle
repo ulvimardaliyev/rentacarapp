@@ -1,0 +1,29 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.7'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'az.rentacar.ads.service'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //spring
+    implementation 'org.springframework.boot:spring-boot-starter'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation libraries.web
+    implementation libraries.springValidation
+    implementation libraries.cloud
+}
+
+tasks.named('test') {
+//    useJUnitPlatform()
+}
+task prepareKotlinBuildScriptModel {
+
+}
