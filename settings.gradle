@@ -1,2 +1,3 @@
 rootProject.name = 'rentacarapp'
 include(':auth-service')
+include(':account-service')
