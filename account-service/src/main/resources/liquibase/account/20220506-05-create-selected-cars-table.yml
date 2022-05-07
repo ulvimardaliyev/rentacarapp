@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20220506-05
+      author: ulvimardaliyev
+      changes:
+        - createTable:
+            tableName: selected_cars
+            schemaName: public
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: selected_cars_pk
+              - column:
+                  name: user_id
+                  type: bigserial
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_selected_cars_user
+                    references: user(id)
+              - column:
+                  name: car_id
+                  type: bigserial
+              - column:
+                  name: from_date #rent time, from
+                  type: timestamp
+              - column:
+                  name: to_date #rent time, to
+                  type: timestamp

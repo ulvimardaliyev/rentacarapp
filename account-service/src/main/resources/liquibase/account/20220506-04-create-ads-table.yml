@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20220506-01
+      author: ulvimardaliyev
+      changes:
+        - createTable:
+            tableName: ads
+            schemaName: public
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: ads_pk
+              - column:
+                  name: car_id
+                  type: bigserial
+                  constraints:
+                    nullable: false
+              #                  foreignKeyName: fk_car
+              - column:
+                  name: publisher_id
+                  type: bigserial
+              - column:
+                  name: publisher_type #company or user
+                  type: int

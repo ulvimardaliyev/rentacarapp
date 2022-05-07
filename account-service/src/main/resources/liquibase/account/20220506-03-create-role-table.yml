@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20220506-03
+      author: ulvimardaliyev
+      changes:
+        - createTable:
+            tableName: role
+            schemaName: public
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: role_pk
+              - column:
+                  name: role_name
+                  type: varchar(40)

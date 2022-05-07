@@ -1,0 +1,42 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20220506-01
+      author: ulvimardaliyev
+      changes:
+        - createTable:
+            tableName: user
+            schemaName: public
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: user_pk
+              - column:
+                  name: username
+                  type: varchar(40)
+              - column:
+                  name: name
+                  type: varchar(40)
+              - column:
+                  name: surname
+                  type: varchar(50)
+              - column:
+                  name: password
+                  type: varchar(100)
+              - column:
+                  name: email
+                  type: varchar(50)
+              - column:
+                  name: user_number
+                  type: varchar(20)
+              - column:
+                  name: phone
+                  type: varchar(10)
+              - column:
+                  name: ads_count
+                  type: int
+
+
