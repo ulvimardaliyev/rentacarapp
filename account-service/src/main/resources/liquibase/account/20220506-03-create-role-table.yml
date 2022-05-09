@@ -10,9 +10,13 @@ databaseChangeLog:
               - column:
                   name: id
                   type: int
+                  autoIncrement: true
                   constraints:
                     primaryKey: true
                     primaryKeyName: role_pk
               - column:
                   name: role_name
                   type: varchar(40)
+        - sqlFile:
+            dbms: postgresql
+            path: db/01-insert-roles.sql

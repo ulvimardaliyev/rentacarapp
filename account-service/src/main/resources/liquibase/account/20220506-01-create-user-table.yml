@@ -38,5 +38,6 @@ databaseChangeLog:
               - column:
                   name: ads_count
                   type: int
-
-
+              - column:
+                  name: role_id
+                  type: int
