@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20220506-02
+      author: ulvimardaliyev
+      changes:
+        - createTable:
+            tableName: company
+            schemaName: public
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: company_pk
+              - column:
+                  name: name
+                  type: varchar(40)
+              - column:
+                  name: password
+                  type: varchar(100)
+              - column:
+                  name: email
+                  type: varchar(50)
+              - column:
+                  name: company_number
+                  type: varchar(20)
+              - column:
+                  name: tax_id
+                  type: varchar(15)
+              - column:
+                  name: ads_count
+                  type: int
+
+

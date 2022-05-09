@@ -9,9 +9,18 @@ spring:
   jpa:
     generate-ddl: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     database: postgresql
+  liquibase:
+    change-log: classpath:liquibase/changelog-master.yml
+    driver-class-name: org.postgresql.Driver
+    enabled: true
+    default-schema: public
+    user: user
+    url: jdbc:postgresql://localhost:5436/rent_a_car
+    password: 1234
+    drop-first: false

@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.6.7'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'org.liquibase.gradle' version '2.0.4'
 }
 
 group = 'az.rentacar.account.service'
@@ -11,6 +12,9 @@ sourceCompatibility = '11'
 repositories {
     mavenCentral()
 }
+
+apply plugin: 'io.spring.dependency-management'
+apply from: 'gradle/liquibase.gradle'
 
 dependencies {
     //spring
@@ -34,6 +38,7 @@ dependencies {
     //postgresql
     compileOnly libraries.postgresqlDriver
 }
+//diffChangeLog.dependsOn build
 
 tasks.named('test') {
 //    useJUnitPlatform()
