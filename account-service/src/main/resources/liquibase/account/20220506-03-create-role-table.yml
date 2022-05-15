@@ -19,4 +19,4 @@ databaseChangeLog:
                   type: varchar(40)
         - sqlFile:
             dbms: postgresql
-            path: db/01-insert-roles.sql
+            path: ../db/01-insert-roles.sql

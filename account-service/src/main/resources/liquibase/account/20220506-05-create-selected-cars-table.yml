@@ -20,7 +20,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
                     foreignKeyName: fk_selected_cars_user
-                    references: user(id)
+                    references: users(id)
               - column:
                   name: car_id
                   type: bigserial
