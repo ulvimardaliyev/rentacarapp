@@ -15,4 +15,10 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     database: postgresql
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
+jwt:
+  secret: secret
+  expirationMs: 86000000
