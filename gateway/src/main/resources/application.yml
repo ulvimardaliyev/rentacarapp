@@ -1,0 +1,38 @@
+server:
+  port: 9098
+spring:
+  application:
+    name: GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: ACCOUNT-SERVICE
+          uri: lb://ACCOUNT-SERVICE
+          predicates:
+            - Path=/account
+        - id: AUTH-SERVICE
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/api/auth/**
+        - id: AUTH-SERVICE
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/api/test/**
+        - id: ADS-PLACEMENT-SERVICE
+          uri: lb://ADS-PLACEMENT-SERVICE
+          predicates:
+            - Path=/ads
+        - id: CAR-SERVICE
+          uri: lb://CAR-SERVICE
+          predicates:
+            - Path=/cars
+    discovery:
+      enabled: true
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
