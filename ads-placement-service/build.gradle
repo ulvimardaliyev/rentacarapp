@@ -19,6 +19,7 @@ dependencies {
     implementation libraries.web
     implementation libraries.springValidation
     implementation libraries.cloud
+    implementation libraries.eurekaClient
 }
 
 tasks.named('test') {

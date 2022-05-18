@@ -4,3 +4,11 @@ spring:
   data:
     mongodb:
       uri: mongodb://user:1234@localhost:27017/test
+  application:
+    name: CAR-SERVICE
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${random.value}

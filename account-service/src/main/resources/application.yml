@@ -24,3 +24,11 @@ spring:
     url: jdbc:postgresql://localhost:5436/rent_a_car
     password: 1234
     drop-first: false
+  application:
+    name: ACCOUNT-SERVICE
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${random.value}

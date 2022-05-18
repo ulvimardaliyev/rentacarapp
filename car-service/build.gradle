@@ -19,6 +19,7 @@ dependencies {
     implementation libraries.web
     implementation libraries.springValidation
     implementation libraries.springMongodb
+    implementation libraries.eurekaClient
     //lombok
     compileOnly libraries.lombok
     annotationProcessor libraries.lombok
