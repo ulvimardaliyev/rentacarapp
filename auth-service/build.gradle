@@ -21,6 +21,7 @@ dependencies {
     implementation libraries.springData
     implementation libraries.springSecurity
     implementation libraries.springValidation
+    implementation libraries.eurekaClient
     //jwt
     runtimeOnly libraries.jwtImpl
     runtimeOnly libraries.jwtJackson

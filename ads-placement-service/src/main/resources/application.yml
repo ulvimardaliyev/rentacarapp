@@ -1,2 +1,11 @@
 server:
   port: 8085
+spring:
+  application:
+    name: ADS-PLACEMENT-SERVICE
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
