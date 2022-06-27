@@ -2,16 +2,15 @@ package az.rentacar.authservice.security.jwt;
 
 import az.rentacar.authservice.security.service.UserDetailsImpl;
 import io.jsonwebtoken.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+
+
 
 @Data
 @Slf4j
