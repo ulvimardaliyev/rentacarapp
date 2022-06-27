@@ -1,5 +1,13 @@
 server:
   port: 9098
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: gateway
 spring:
   application:
     name: GATEWAY
@@ -9,23 +17,42 @@ spring:
         - id: ACCOUNT-SERVICE
           uri: lb://ACCOUNT-SERVICE
           predicates:
-            - Path=/account
+            - Path=/api/user
+#            - Header=X-User-Id
+#          filters:
+#            - AuthenticationPrefilter
+
         - id: AUTH-SERVICE
           uri: lb://AUTH-SERVICE
           predicates:
-            - Path=/api/auth/**
+            - Path=/api/auth/signin
         - id: AUTH-SERVICE
           uri: lb://AUTH-SERVICE
           predicates:
-            - Path=/api/test/**
+            - Path=/api/auth/signup
+#        - id: AUTH-SERVICE
+#          uri: lb://AUTH-SERVICE
+#          predicates:
+#            - Path=/api/auth/validateToken
+#            - Header=Authorization
+        - id: AUTH-SERVICE
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/api/test/user
+          filters:
+            - AuthenticationPrefilter
         - id: ADS-PLACEMENT-SERVICE
           uri: lb://ADS-PLACEMENT-SERVICE
           predicates:
             - Path=/ads
+#          filters:
+#            - AuthenticationPrefilter
         - id: CAR-SERVICE
           uri: lb://CAR-SERVICE
           predicates:
             - Path=/cars
+#          filters:
+#            - AuthenticationPrefilter
     discovery:
       enabled: true
 eureka:
