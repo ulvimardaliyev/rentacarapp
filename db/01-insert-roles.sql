@@ -1,4 +1,4 @@
 insert into role (role_name)
-values ('USER'),
-       ('ADMIN'),
-       ('MODERATOR');
+values ('ROLE_USER'),
+       ('ROLE_ADMIN'),
+       ('ROLE_MODERATOR');
