@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 
-
 @Data
 @Slf4j
 @Component
@@ -41,15 +40,19 @@ public class JwtUtils {
             return true;
         } catch (SignatureException e) {
             log.error("Invalid JWT signature: {}", e.getMessage());
+            throw new RuntimeException("Invalid JWT Signature");
         } catch (MalformedJwtException e) {
             log.error("Invalid JWT token: {}", e.getMessage());
+            throw new RuntimeException("Invalid JWT token");
         } catch (ExpiredJwtException e) {
             log.error("JWT token is expired: {}", e.getMessage());
+            throw new RuntimeException("JWT token expired");
         } catch (UnsupportedJwtException e) {
             log.error("JWT token is unsupported: {}", e.getMessage());
+            throw new RuntimeException("JWT token is unsupported");
         } catch (IllegalArgumentException e) {
             log.error("JWT claims string is empty: {}", e.getMessage());
+            throw new RuntimeException("JWT claims string is empty");
         }
-        return false;
     }
 }

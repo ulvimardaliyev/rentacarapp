@@ -12,11 +12,11 @@ public class TestController {
         return "Public Content.";
     }
 
-    //    @GetMapping("/user")
-//    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
-//    public String userAccess() {
-//        return "User Content.";
-//    }
+        @GetMapping("/user")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public String userAccess(@RequestHeader(value = "x-user-id") String header) {
+        return "User Content."+header;
+    }
     @GetMapping("/mod")
     @PreAuthorize("hasRole('MODERATOR')")
     public String moderatorAccess() {
@@ -29,8 +29,8 @@ public class TestController {
         return "Admin Board.";
     }
 
-    @GetMapping("/user")
-    public String filterTesting(@RequestHeader(value = "x-user-id") String header) {
-        return "Auth controller : This is filter testing endpoint with header: " + header;
-    }
+//    @GetMapping("/user")
+//    public String filterTesting(@RequestHeader(value = "x-user-id") String header) {
+//        return "Auth controller : This is filter testing endpoint with header: " + header;
+//    }
 }
