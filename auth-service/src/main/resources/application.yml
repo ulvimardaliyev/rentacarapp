@@ -27,5 +27,5 @@ eureka:
   instance:
     instance-id: ${spring.application.name}:${random.value}
 jwt:
-  secret: secret
+  secret: 2bb80d537b1da3e38bd30361aa855686bde0eacd7162fef6a25fe97bf527a25b
   expirationMs: 86000000

@@ -17,6 +17,11 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.cloud:spring-cloud-starter-gateway:3.1.2'
     implementation libraries.eurekaClient
+    //lombok
+    compileOnly libraries.lombok
+    annotationProcessor libraries.lombok
+    testCompileOnly libraries.lombok
+    testAnnotationProcessor libraries.lombok
 }
 
 tasks.named('test') {

@@ -2,16 +2,14 @@ package az.rentacar.authservice.security.jwt;
 
 import az.rentacar.authservice.security.service.UserDetailsImpl;
 import io.jsonwebtoken.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+
 
 @Data
 @Slf4j
@@ -42,15 +40,19 @@ public class JwtUtils {
             return true;
         } catch (SignatureException e) {
             log.error("Invalid JWT signature: {}", e.getMessage());
+            throw new RuntimeException("Invalid JWT Signature");
         } catch (MalformedJwtException e) {
             log.error("Invalid JWT token: {}", e.getMessage());
+            throw new RuntimeException("Invalid JWT token");
         } catch (ExpiredJwtException e) {
             log.error("JWT token is expired: {}", e.getMessage());
+            throw new RuntimeException("JWT token expired");
         } catch (UnsupportedJwtException e) {
             log.error("JWT token is unsupported: {}", e.getMessage());
+            throw new RuntimeException("JWT token is unsupported");
         } catch (IllegalArgumentException e) {
             log.error("JWT claims string is empty: {}", e.getMessage());
+            throw new RuntimeException("JWT claims string is empty");
         }
-        return false;
     }
 }

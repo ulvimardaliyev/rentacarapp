@@ -2,6 +2,7 @@ package az.rentacar.authservice.resource;
 
 import az.rentacar.authservice.dto.request.LoginRequest;
 import az.rentacar.authservice.dto.request.SignupRequest;
+import az.rentacar.authservice.dto.response.ConnValidationResponse;
 import az.rentacar.authservice.dto.response.JwtResponse;
 import az.rentacar.authservice.dto.response.MessageResponse;
 import az.rentacar.authservice.entity.Role;
@@ -11,14 +12,13 @@ import az.rentacar.authservice.repository.UserRepository;
 import az.rentacar.authservice.security.jwt.JwtUtils;
 import az.rentacar.authservice.security.service.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -31,6 +31,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping(("/api/auth"))
 @RequiredArgsConstructor
+@Slf4j
 public class AuthController {
     private final AuthenticationManager authenticationManager;
 
@@ -88,7 +89,7 @@ public class AuthController {
         Set<Role> roles = new HashSet<>();
 
         if (strRoles == null) {
-            Role userRole = roleRepository.findRoleByRoleName("USER")
+            Role userRole = roleRepository.findRoleByRoleName("ROLE_USER")
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(userRole);
         } else {
@@ -113,10 +114,16 @@ public class AuthController {
                 }
             });
         }
-
         user.setRoles(roles);
         userRepository.save(user);
-
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }
+
+    @GetMapping("/validateToken")
+    public ResponseEntity<ConnValidationResponse> validateToken(@RequestHeader(name = "Authorization") String authorization) {
+        log.info("Request is coming with header {}", authorization);
+        ConnValidationResponse connValidationResponse = new ConnValidationResponse();
+        connValidationResponse.setToken("Token");
+        return ResponseEntity.ok(connValidationResponse);
     }
 }
